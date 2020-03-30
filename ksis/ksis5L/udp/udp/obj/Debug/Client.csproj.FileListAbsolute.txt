@@ -1,0 +1,23 @@
+F:\Университет\Ксис\5.2\udp\udp\bin\Debug\udp.exe.config
+F:\Университет\Ксис\5.2\udp\udp\bin\Debug\udp.exe
+F:\Университет\Ксис\5.2\udp\udp\bin\Debug\udp.pdb
+F:\Университет\Ксис\5.2\udp\udp\obj\Debug\Client.csproj.CoreCompileInputs.cache
+F:\Университет\Ксис\5.2\udp\udp\obj\Debug\udp.exe
+F:\Университет\Ксис\5.2\udp\udp\obj\Debug\udp.pdb
+F:\Университет\Ксис\5.2 — копия\udp\udp\bin\Debug\udp.exe.config
+F:\Университет\Ксис\5.2 — копия\udp\udp\bin\Debug\udp.exe
+F:\Университет\Ксис\5.2 — копия\udp\udp\bin\Debug\udp.pdb
+F:\Университет\Ксис\5.2 — копия\udp\udp\obj\Debug\Client.csproj.CoreCompileInputs.cache
+F:\Университет\Ксис\5.2 — копия\udp\udp\obj\Debug\udp.exe
+F:\Университет\Ксис\5.2 — копия\udp\udp\obj\Debug\udp.pdb
+F:\Университет\Ксис\5.3\udp\udp\bin\Debug\udp.exe.config
+F:\Университет\Ксис\5.3\udp\udp\bin\Debug\udp.exe
+F:\Университет\Ксис\5.3\udp\udp\bin\Debug\udp.pdb
+F:\Университет\Ксис\5.3\udp\udp\obj\Debug\Client.csproj.CoreCompileInputs.cache
+F:\Университет\Ксис\5.3\udp\udp\obj\Debug\udp.exe
+F:\Университет\Ксис\5.3\udp\udp\obj\Debug\udp.pdb
+C:\Users\Asus\Desktop\ksis\ksis5L\udp\udp\bin\Debug\udp.exe.config
+C:\Users\Asus\Desktop\ksis\ksis5L\udp\udp\bin\Debug\udp.exe
+C:\Users\Asus\Desktop\ksis\ksis5L\udp\udp\bin\Debug\udp.pdb
+C:\Users\Asus\Desktop\ksis\ksis5L\udp\udp\obj\Debug\udp.exe
+C:\Users\Asus\Desktop\ksis\ksis5L\udp\udp\obj\Debug\udp.pdb

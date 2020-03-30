@@ -1,0 +1,5 @@
+C:\Users\Asus\Desktop\ksis\ksis5L\Server\Client\bin\Debug\Client.exe.config
+C:\Users\Asus\Desktop\ksis\ksis5L\Server\Client\bin\Debug\Client.exe
+C:\Users\Asus\Desktop\ksis\ksis5L\Server\Client\bin\Debug\Client.pdb
+C:\Users\Asus\Desktop\ksis\ksis5L\Server\Client\obj\Debug\Client.exe
+C:\Users\Asus\Desktop\ksis\ksis5L\Server\Client\obj\Debug\Client.pdb
