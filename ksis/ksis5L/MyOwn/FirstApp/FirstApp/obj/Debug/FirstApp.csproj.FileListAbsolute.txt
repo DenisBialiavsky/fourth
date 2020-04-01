@@ -1,6 +1,0 @@
-C:\Users\Asus\Desktop\ksis\ksis5L\MyOwn\FirstApp\FirstApp\bin\Debug\FirstApp.exe.config
-C:\Users\Asus\Desktop\ksis\ksis5L\MyOwn\FirstApp\FirstApp\bin\Debug\FirstApp.exe
-C:\Users\Asus\Desktop\ksis\ksis5L\MyOwn\FirstApp\FirstApp\bin\Debug\FirstApp.pdb
-C:\Users\Asus\Desktop\ksis\ksis5L\MyOwn\FirstApp\FirstApp\obj\Debug\FirstApp.csprojResolveAssemblyReference.cache
-C:\Users\Asus\Desktop\ksis\ksis5L\MyOwn\FirstApp\FirstApp\obj\Debug\FirstApp.exe
-C:\Users\Asus\Desktop\ksis\ksis5L\MyOwn\FirstApp\FirstApp\obj\Debug\FirstApp.pdb
