@@ -82,13 +82,6 @@ public class ProjectTeam extends Group{
 
 	@Override
 	public String toString() {
-		/*String res = "\n" + getName() + "\n" + "Budget=" + budget + "\nTerm=" + timeToDevProject + "\n";
-
-		for (int i = 0; i < member.size(); i++) {
-			res += member.get(i).toString();
-			res += "\n";
-		}
-		return res + "\n";*/
 		return getName();
 	}
 

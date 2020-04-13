@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Library;
 using System.Windows.Forms;
 
 namespace SingleThread
@@ -21,7 +19,7 @@ namespace SingleThread
             {
                 double phase = ((Math.PI * 2) / p.T) * ((i * p.Info.Interval) / 1000d);
                 double X = p.A * Math.Sin(phase);
-                p.Info.Moments.Add(new Moment(phase, X));
+                p.Info.Moments.Add(new Moment(phase, X, i * p.Info.Interval));
                 Bitmap bmp = new Bitmap(pictureBox1.ClientSize.Width, pictureBox1.ClientSize.Height);
                 using (Graphics g = Graphics.FromImage(bmp))
                 {

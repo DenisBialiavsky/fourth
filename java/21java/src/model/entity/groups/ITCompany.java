@@ -13,6 +13,7 @@ public class ITCompany extends Group {
 	private int[] spareIds;
 	private int[] reservedIds;
 
+
 	{
 		spareIds = new int[MAX_ID - MIN_ID];
 		reservedIds = new int[MAX_ID - MIN_ID];
@@ -28,37 +29,55 @@ public class ITCompany extends Group {
 		aspirants = (type.equalsIgnoreCase("myarray")) ? new MyArray() : new MyList();
 	}
 
+	
+
 	public Storable<ProjectTeam> getTeams() {
 		return teams;
 	}
+
+
 
 	public void setTeams(Storable<ProjectTeam> teams) {
 		this.teams = teams;
 	}
 
+
+
 	public Storable<Employee> getAspirants() {
 		return aspirants;
 	}
+
+
 
 	public void setAspirants(Storable<Employee> aspirants) {
 		this.aspirants = aspirants;
 	}
 
+
+
 	public int[] getSpareIds() {
 		return spareIds;
 	}
+
+
 
 	public void setSpareIds(int[] spareIds) {
 		this.spareIds = spareIds;
 	}
 
+
+
 	public int[] getReservedIds() {
 		return reservedIds;
 	}
 
+
+
 	public void setReservedIds(int[] reservedIds) {
 		this.reservedIds = reservedIds;
 	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -88,10 +107,6 @@ public class ITCompany extends Group {
 
 	@Override
 	public String toString() {
-		/*
-		 * String str = super.toString(); for (int i = 0; i < teams.size(); i++) { str
-		 * += teams.get(i).toString(); } return str;
-		 */
 		return getName();
 	}
 }

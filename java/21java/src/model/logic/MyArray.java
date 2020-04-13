@@ -10,9 +10,6 @@ public class MyArray implements Storable{
 	public MyArray() {
 	}
 
-	public MyArray(int i) {
-		ms = new Object[i];
-	}
 
 	@Override
 	public void add(Object b) {

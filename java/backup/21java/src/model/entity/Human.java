@@ -7,15 +7,6 @@ public class Human {
 	private String name;
 	private int age;
 	private boolean isHasJob;
-	private static int countHuman;
-
-	{
-		countHuman++;
-	}
-
-	public Human() {
-		this("Joe", 0, false);
-	}
 
 	public Human(String name, int age, boolean isHasJob) {
 		this.name = name;
@@ -51,10 +42,6 @@ public class Human {
 
 	public boolean getIsHasJob() {
 		return isHasJob;
-	}
-
-	public int getCountHuman() {
-		return countHuman;
 	}
 
 	@Override

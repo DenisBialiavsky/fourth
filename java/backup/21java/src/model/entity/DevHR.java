@@ -1,87 +1,60 @@
 package model.entity;
 
-import static view.Output.exhibitRed;
+import static view.Output.exhibit;
 
 import java.util.*;
 
+import model.entity.groups.ITCompany;
+import model.entity.groups.ProjectTeam;
+import model.factory.DevFactory;
 import model.logic.MyArray;
 import model.logic.Storable;
-
-import static model.logic.MyFactory.*;
 import static model.logic.Utils.*;
 import static view.Output.*;
 
 public class DevHR extends HR {
 
-	// биржа труда вакантные дожности
-	// то что меньше платит меньше
-	// рандом
-
-	public DevHR() {
-		
-	}
-
 	public DevHR(DevHR hr) {
 		super(hr);
 	}
 
-	public DevHR(String name, int age, boolean isHasJob, int id, String placeOfWork, String calling, int cost) {
-		super(name, age, isHasJob, id, placeOfWork, calling, cost);
+	public DevHR(String name, int age, boolean isHasJob, int id, ITCompany placeOfWork, ProjectTeam project,
+			String calling, int cost) {
+		super(name, age, isHasJob, id, placeOfWork, project, calling, cost);
 	}
 
-	public Storable<Employee> searchApplyers(int PreferableNmberOfCandidats) {
-		return createDev(PreferableNmberOfCandidats, false);
+	public void searchApplyers(int PreferableNmberOfCandidats) {
+		placeOfWork.getAspirants().addAll(new DevFactory().create(PreferableNmberOfCandidats));
 	}
 
-	public Storable<Employee> interview(int n, Storable<Employee> aspirants) {
+	public void  interview(int n, String project) {
 		Storable<Employee> accepted = new MyArray();
 		int counter = 0;
-		for (int i = 0; i < aspirants.size(); i++) {
-			if ((aspirants.get(i).getClass() == new JavaDev().getClass()
-					|| aspirants.get(i).getClass() == new CSharpDev().getClass())
-					&& ((Developer) aspirants.get(i)).getSkill() >= THRESHOLD) {
-				aspirants.get(i).setIsHasJob(true);
-				accepted.add(aspirants.get(i));
-				aspirants.remove(i--);
-				counter++;
-			}
-			if (counter == n) {
-				break;
+		for (int i = 0; i < placeOfWork.getAspirants().size(); i++) {
+			if ((placeOfWork.getAspirants().get(i).getClass() == Developer.class)
+					&& ((Developer) placeOfWork.getAspirants().get(i)).getSkill() >= THRESHOLD) {
+				placeOfWork.getAspirants().get(i).setIsHasJob(true);
+				accepted.add(placeOfWork.getAspirants().get(i));
+				placeOfWork.getAspirants().remove(i--);
+				if (++counter == n) {
+					break;
+				}
 			}
 		}
 		if (counter < n) {
 			exhibit("Very few Developer aspirants !");
 		}
-		return accepted;
+		setProjectToEmployee(accepted,placeOfWork.getTeams().get(searchProjectTeamByName(project)));
+		setIdToEmployee(accepted);
+		setPlaceOfWorkToEmployee(accepted);
+		placeOfWork.getTeams().get(searchProjectTeamByName(project)).getMember().addAll(accepted);
 	}
+	
+	
 
 	@Override
 	public void work() {
-		exhibitRed("DevHR is working");
-	}
-
-	@Override
-	public int hashCode() {
-		return super.hashCode();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return super.toString();
+		exhibit("DevHR is working");
 	}
 
 }

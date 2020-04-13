@@ -2,13 +2,9 @@ package model.entity;
 
 import model.entity.groups.ITCompany;
 import model.entity.groups.ProjectTeam;
-import model.logic.Storable;
 
 import static view.Output.*;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class Boss extends PM {
 
@@ -22,19 +18,9 @@ public class Boss extends PM {
 		super(name, age, isHasJob, id, placeOfWork, project, calling, cost);
 		return;
 	}
-
+	
 	public void showMembers() {
-		exhibit(placeOfWork.toString() + "\n");
-		for(int i = 0; i< placeOfWork.getTeams().size(); i++) {
-			exhibit("Name=" + placeOfWork.getTeams().get(i).toString() + 
-					"\n" +"Budget=" + placeOfWork.getTeams().get(i).getBudget()+ "\n"
-					+"Term=" + placeOfWork.getTeams().get(i).getTimeToDevProject());
-			for(int j = 0 ; j < placeOfWork.getTeams().get(i).getMember().size(); j++) {
-				exhibit(placeOfWork.getTeams().get(i).getMember().get(j).toString());
-			}
-			exhibit("");
-		}
-		exhibit("");
+		exhibit(placeOfWork);
 	}
 	
 	public void compelToWork() {		
@@ -68,6 +54,6 @@ public class Boss extends PM {
 	
 	@Override
 	public void work() {
-		exhibit("Boss is working");
+		exhibit(getName() + " is governing!");
 	}
 }

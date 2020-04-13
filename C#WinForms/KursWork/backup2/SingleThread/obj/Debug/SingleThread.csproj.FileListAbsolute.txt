@@ -7,3 +7,8 @@ C:\Users\Asus\Desktop\C#WinForms\KursWork\SingleThread\obj\Debug\SingleThread.Pr
 C:\Users\Asus\Desktop\C#WinForms\KursWork\SingleThread\obj\Debug\SingleThread.csproj.GenerateResource.cache
 C:\Users\Asus\Desktop\C#WinForms\KursWork\SingleThread\obj\Debug\SingleThread.exe
 C:\Users\Asus\Desktop\C#WinForms\KursWork\SingleThread\obj\Debug\SingleThread.pdb
+C:\Users\Asus\Desktop\C#WinForms\KursWork\SingleThread\obj\Debug\SingleThread.csproj.ResolveComReference.cache
+C:\Users\Asus\Desktop\C#WinForms\KursWork\SingleThread\bin\Debug\Xceed.Document.NET.dll
+C:\Users\Asus\Desktop\C#WinForms\KursWork\SingleThread\bin\Debug\Xceed.Words.NET.dll
+C:\Users\Asus\Desktop\C#WinForms\KursWork\SingleThread\obj\Debug\SingleThread.csproj.CopyComplete
+C:\Users\Asus\Desktop\C#WinForms\KursWork\SingleThread\obj\Debug\SingleThread.Form2.resources

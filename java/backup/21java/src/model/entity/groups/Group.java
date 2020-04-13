@@ -4,11 +4,7 @@ import java.util.Objects;
 
 public class Group {
 
-	private String name;
-
-	public Group() {
-
-	}
+	protected String name;
 
 	public Group(String name) {
 		this.name = name;

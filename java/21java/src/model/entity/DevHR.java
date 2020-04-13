@@ -1,22 +1,14 @@
 package model.entity;
 
 import static view.Output.exhibit;
-
-import java.util.*;
-
 import model.entity.groups.ITCompany;
 import model.entity.groups.ProjectTeam;
 import model.factory.DevFactory;
 import model.logic.MyArray;
 import model.logic.Storable;
-import static model.logic.Utils.*;
-import static view.Output.*;
+
 
 public class DevHR extends HR {
-
-	// биржа труда вакантные дожности
-	// то что меньше платит меньше
-	// рандом
 
 	public DevHR(DevHR hr) {
 		super(hr);
@@ -58,7 +50,7 @@ public class DevHR extends HR {
 
 	@Override
 	public void work() {
-		exhibit("DevHR is working");
+		exhibit(getName() + " is searching people!");
 	}
 
 }

@@ -11,12 +11,12 @@ namespace Server
         static void Main(string[] args)
         {
             // Устанавливаем для сокета локальную конечную точку
-            IPHostEntry ipHost = Dns.GetHostEntry("192.168.43.99");//0000
-            IPAddress ipAddr = ipHost.AddressList[0];
-            IPEndPoint ipEndPoint = new IPEndPoint(ipAddr, 11000);
+            //IPHostEntry ipHost = Dns.GetHostEntry("0.0.0.0");//0000
+            //IPAddress ipAddr = "0.0.0.0";// ipHost.AddressList[0];
+            IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Parse("0.0.0.0"), 11000);
 
             // Создаем сокет Tcp/Ip
-            Socket sListener = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            Socket sListener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             
             // Назначаем сокет локальной конечной точке и слушаем входящие сокеты
             try
@@ -46,7 +46,8 @@ namespace Server
 
                     // Отправляем ответ клиенту\
                     string reply = "Спасибо за запрос в " + data.Length.ToString()
-                         + " символов. \nCurrent date : " +  DateTime.Now;
+                         + " символов. \nCurrent date : " +  DateTime.Now + "\n" +
+                         Monitor();
                     byte[] msg = Encoding.UTF8.GetBytes(reply);
                     handler.Send(msg);
 
@@ -69,5 +70,29 @@ namespace Server
                 Console.ReadLine();
             }
         }
+        static string Monitor()
+        {
+            string str = "";
+            for (int i = 0; i <= 65535; i++)
+            {
+                try
+                {
+                    Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+                    IPEndPoint localIP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), i);
+                    socket.Bind(localIP);
+                    str += i + " Is spare\n ";
+                    socket.Close();
+                }
+                catch (SocketException e)
+                {
+                    Console.WriteLine(e.Message);
+                    
+                    continue;
+                }
+            }
+            return str;
+        }
     }
+
+
 }

@@ -31,7 +31,7 @@ namespace UdpMonitor
 
         void Monitor(string ip)
         {
-            for (int i = 0; i < 65535; i++ )
+            for (int i = 0; i <= 65535; i++ )
             {
                 try
                 {
@@ -39,6 +39,7 @@ namespace UdpMonitor
                     IPEndPoint localIP = new IPEndPoint(IPAddress.Parse(ip), i);
                     socket.Bind(localIP);
                     Console.WriteLine("The {0} socket is spare", i);
+                    socket.Close();
                 }
                 catch(SocketException e)
                 {

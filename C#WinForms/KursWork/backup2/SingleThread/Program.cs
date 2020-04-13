@@ -16,6 +16,15 @@ namespace SingleThread
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+           /* Form2 first = new Form2();
+            DateTime end = DateTime.Now + TimeSpan.FromSeconds(5);
+            first.Show();
+            while(end >DateTime.Now)
+            {
+                Application.DoEvents();
+            }
+            first.Close();
+            first.Dispose();*/
             Application.Run(new Form1());
         }
     }

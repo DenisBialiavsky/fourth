@@ -1,50 +1,52 @@
 package model.entity;
 
-import static model.logic.MyFactory.createQA;
 import static view.Output.*;
 
+import model.entity.groups.ITCompany;
+import model.entity.groups.ProjectTeam;
+import model.factory.QAFactory;
+import model.factory.QAHRFactory;
 import model.logic.MyArray;
 import model.logic.Storable;
 
 public class QAHR extends HR {
 
-	public QAHR() {
 
+	public QAHR(String name, int age, boolean isHasJob, int id, ITCompany placeOfWork, ProjectTeam project,
+			String calling, int cost) {
+		super(name, age, isHasJob, id, placeOfWork, project, calling, cost);
 	}
 
-	public QAHR(String name, int age, boolean isHasJob, int id, String placeOfWork, String calling, int cost) {
-		super(name, age, isHasJob, id, placeOfWork, calling, cost);
+	public void searchApplyers(int PreferableNmberOfCandidats) {
+		placeOfWork.getAspirants().addAll(new QAFactory().create(PreferableNmberOfCandidats));
 	}
 
-	public Storable<Employee> searchApplyers(int PreferableNmberOfCandidats) {
-		return createQA(PreferableNmberOfCandidats, false);
-	}
-
-	public Storable<Employee> interview(int n, Storable<Employee> aspirants) {
+	public void interview(int n, String project) {
 		Storable<Employee> accepted = new MyArray();
 		int counter = 0;
-		for (int i = 0; i < aspirants.size(); i++) {
-			if ((aspirants.get(i).getClass() == new AutoQA().getClass()
-					|| aspirants.get(i).getClass() == new ManualQA().getClass())
-					&& ((QA) aspirants.get(i)).getCost() <= 1300) {
-				aspirants.get(i).setIsHasJob(true);
-				accepted.add(aspirants.get(i));
-				aspirants.remove(i--);
-				counter++;
-			}
-			if (counter == n) {
-				break;
+		for (int i = 0; i < placeOfWork.getAspirants().size(); i++) {
+			if ((placeOfWork.getAspirants().get(i).getClass() == QA.class
+					&& ((QA) placeOfWork.getAspirants().get(i)).getCost() <= 1300)) {
+				placeOfWork.getAspirants().get(i).setIsHasJob(true);
+				accepted.add(placeOfWork.getAspirants().get(i));
+				placeOfWork.getAspirants().remove(i--);
+				if (++counter == n) {
+					break;
+				}
 			}
 		}
 		if (counter < n) {
 			exhibit("Very few QA aspirants !");
 		}
-		return accepted;
+		setProjectToEmployee(accepted,placeOfWork.getTeams().get(searchProjectTeamByName(project)));
+		setIdToEmployee(accepted);
+		setPlaceOfWorkToEmployee(accepted);
+		placeOfWork.getTeams().get(searchProjectTeamByName(project)).getMember().addAll(accepted);
 	}
 
 	@Override
 	public void work() {
-		exhibitRed("QAHR is working");
+		exhibit("QAHR is working");
 	}
 
 	@Override

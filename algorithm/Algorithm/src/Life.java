@@ -18,6 +18,8 @@ public class Life {
 		current[x][y] = 1;
 		next[x][y] = 1;
 	}
+	
+	//public boolena compare()
 
 	public void show() {
 		for (int[] i : next) {

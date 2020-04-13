@@ -5,7 +5,6 @@ import static view.Output.*;
 import model.entity.groups.ITCompany;
 import model.entity.groups.ProjectTeam;
 import model.factory.QAFactory;
-import model.factory.QAHRFactory;
 import model.logic.MyArray;
 import model.logic.Storable;
 
@@ -46,7 +45,7 @@ public class QAHR extends HR {
 
 	@Override
 	public void work() {
-		exhibit("QAHR is working");
+		exhibit(getName() + " is searching QAs!");
 	}
 
 	@Override

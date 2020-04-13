@@ -1,8 +1,9 @@
 package model.logic;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
-public class MyArray implements Storable {
+public class MyArray implements Storable{
 
 	private Object ms[] = new Object[0];
 
@@ -56,6 +57,12 @@ public class MyArray implements Storable {
 		return ms.length;
 	}
 
+	@Override
+	public void set(int index, Object elem) {
+		ms[index]= elem;
+	}
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

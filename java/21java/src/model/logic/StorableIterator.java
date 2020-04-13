@@ -1,16 +1,15 @@
 package model.logic;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
-public class StorableIterator implements Iterator{
+
+public class StorableIterator<T> implements Iterator<T>{
 	
-	private Storable<Object> ms;
+	private Storable<T> ms;
 	private int position;
 	
 
-	public StorableIterator(Storable<Object> ms) {
+	public StorableIterator(Storable<T> ms) {
 		this.ms = ms;	
 	}
 
@@ -20,7 +19,7 @@ public class StorableIterator implements Iterator{
 	}
 
 	@Override
-	public Object next() {
+	public T next() {
 		return ms.get(position++);
 	}
 

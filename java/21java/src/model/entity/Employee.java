@@ -36,7 +36,7 @@ public class Employee extends Human implements Workable {
 	}
 
 	public void work() {
-		exhibit(getName() + " is working");
+		exhibitThatLine(getName() + " ... ");
 	}
 
 	public int getId() {

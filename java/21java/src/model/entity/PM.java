@@ -2,9 +2,6 @@ package model.entity;
 
 import static model.logic.Utils.*;
 import static view.Output.*;
-
-import java.util.*;
-
 import model.entity.groups.ITCompany;
 import model.entity.groups.ProjectTeam;
 import model.logic.Storable;
@@ -32,13 +29,7 @@ public class PM extends Employee {
 	}
 
 	public int searchProjectTeamByName(String name) {
-		int res = Integer.MAX_VALUE;
-		for (int i = 0; i < placeOfWork.getTeams().size(); i++) {
-			if (placeOfWork.getTeams().get(i).getName().equals(name)) {
-				res = i;
-			}
-		}
-		return res;
+		return model.logic.Utils.searchProjectTeamByName(placeOfWork, name);
 	}
 
 	public Employee searchById(int elem) {
@@ -63,7 +54,7 @@ public class PM extends Employee {
 		return res;
 	}
 
-	public int searchEmpIndexById(Storable storable, int id) {
+	public int searchEmpIndexById(Storable<Employee> storable, int id) {
 		int res = 0;
 		for (int i = 0; i < storable.size(); i++) {
 			if (((Employee) storable.get(i)).getId() == id) {
@@ -79,6 +70,7 @@ public class PM extends Employee {
 		int empNumber = searchEmpIndexById(placeOfWork.getTeams().get(currentTeam).getMember(), id);
 		placeOfWork.getTeams().get(TargetTeam).getMember().add(searchById(id));
 		placeOfWork.getTeams().get(currentTeam).getMember().remove(empNumber);
+		searchById(id).setProject(placeOfWork.getTeams().get(TargetTeam));
 	}
 
 	public void sort(String teamName, String key) {
@@ -97,7 +89,7 @@ public class PM extends Employee {
 
 	@Override
 	public void work() {
-		exhibit("Project manager is working!");
+		exhibit(getName() + " is managing!");
 	}
 
 }

@@ -1,6 +1,7 @@
 package model.logic;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Objects;
 
 public class MyList implements Storable {
@@ -8,17 +9,21 @@ public class MyList implements Storable {
 	public MyList() {
 
 	}
+	
+	public MyList(int i) {
+		
+	}
 
-	static class Node<T> {
+	static class Node {
 		private Node next;
-		private T data;
+		private Object data;
 		private int index;
 
-		public Node(T data) {
+		public Node(Object data) {
 			this.data = data;
 		}
 
-		public Node(T data, int index) {
+		public Node(Object data, int index) {
 			this.data = data;
 			this.index = index;
 		}
@@ -37,7 +42,15 @@ public class MyList implements Storable {
 			head = new Node(data, 0);
 			return;
 		}
-		tail().next = new Node(data, head.index + 1);
+		tail().next = new Node(data, tail().index + 1);
+	}
+	
+	private Node tail() {
+		Node tail = head;
+		while (tail.next != null) {
+			tail = tail.next;
+		}
+		return tail;
 	}
 
 	@Override
@@ -49,10 +62,51 @@ public class MyList implements Storable {
 
 	@Override
 	public void remove(int i) {
+		if(i == 0) {
+			head = head.next;
+			Node c = head;
+			while (c != null) {
+				c.index--;
+				c = c.next;
+			}
+			return;
+		}
+		if(i == tail().index) {
+			Node p = head;
+			while (p != null) {
+				if(p.next.index == i) {
+					p.next = null;
+				}
+				p = p.next;
+			}
+			return;
+		}
+		else {
+			Node cur = head;
+			Node prev = head;
+			while (cur.next != null) {
+				if (cur.index == i) {
+					prev.next = cur.next;
+					while(cur != null) {
+						cur.index--;
+						cur = cur.next;
+					}
+					break;
+				}
+				prev = cur;
+				cur = cur.next;
+
+			}
+		}
+	}
+	
+	/*
+	 @Override
+	public void remove(int i) {
 		Node cur = head;
 		Node prev = head;
 		while (cur.next != null) {
-			if (cur.index-- == i) {
+			if (cur.index == i) {
 				prev.next = cur.next;
 				break;
 			}
@@ -62,6 +116,7 @@ public class MyList implements Storable {
 		}
 
 	}
+	 */
 
 	@Override
 	public Object get(int n) {
@@ -86,14 +141,20 @@ public class MyList implements Storable {
 		}
 		return length;
 	}
-
-	private Node tail() {
+	
+	@Override
+	public void set(int index, Object elem) {
 		Node tail = head;
 		while (tail.next != null) {
 			tail = tail.next;
+			if(tail.index == index) {
+				tail.data = elem;
+				break;
 		}
-		return tail;
+		}
 	}
+
+	
 
 	public boolean isEmpty() {
 		return size() == 0;

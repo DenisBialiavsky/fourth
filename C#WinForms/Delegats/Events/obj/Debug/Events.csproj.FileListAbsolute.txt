@@ -1,0 +1,6 @@
+C:\Users\Asus\Desktop\C#WinForms\Delegats\Events\bin\Debug\Events.exe.config
+C:\Users\Asus\Desktop\C#WinForms\Delegats\Events\bin\Debug\Events.exe
+C:\Users\Asus\Desktop\C#WinForms\Delegats\Events\bin\Debug\Events.pdb
+C:\Users\Asus\Desktop\C#WinForms\Delegats\Events\obj\Debug\Events.csprojAssemblyReference.cache
+C:\Users\Asus\Desktop\C#WinForms\Delegats\Events\obj\Debug\Events.exe
+C:\Users\Asus\Desktop\C#WinForms\Delegats\Events\obj\Debug\Events.pdb

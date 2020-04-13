@@ -2,6 +2,7 @@ package model.entity;
 
 import model.entity.groups.ITCompany;
 import model.entity.groups.ProjectTeam;
+import model.factory.AccountantFactory;
 import model.factory.DevHRFactory;
 import model.factory.PMFactory;
 import model.factory.QAHRFactory;
@@ -29,11 +30,12 @@ public abstract class HR extends Employee {
 
 	public abstract void interview(int n, String project);
 
-	public void createProjTeam(String name, int budget, int term, int nPM, int nDevHR, int nQAHR) {
+	public void createProjTeam(String name, int budget, int term, int nPM, int nDevHR, int nQAHR, int nAcc) {
 		ProjectTeam newTeam = new ProjectTeam(name, budget, term);
 		newTeam.getMember().addAll(new PMFactory().create(nPM));
 		newTeam.getMember().addAll(new DevHRFactory().create(nDevHR));
 		newTeam.getMember().addAll(new QAHRFactory().create(nQAHR));
+		newTeam.getMember().addAll(new AccountantFactory().create(nAcc));
 		placeOfWork.getTeams().add(newTeam);
 		setProjectToEmployee(placeOfWork.getTeams().get(placeOfWork.getTeams().size() - 1).getMember(), newTeam);
 		setIdToEmployee(placeOfWork.getTeams().get(placeOfWork.getTeams().size() - 1).getMember());
@@ -41,7 +43,7 @@ public abstract class HR extends Employee {
 
 	}
 
-	public void setIdToEmployee(Storable<Employee> storable) {
+	public void setIdToEmployee(Storable<? extends Employee> storable) {
 		for (int i = 0; i < storable.size(); i++) {
 			if (storable.get(i).getId() == 0) {
 				int newId = placeOfWork.getSpareIds()[rand(0, placeOfWork.getSpareIds().length - 1)];
@@ -73,13 +75,7 @@ public abstract class HR extends Employee {
 	}
 
 	public int searchProjectTeamByName(String name) {
-		int res = Integer.MAX_VALUE;
-		for (int i = 0; i < placeOfWork.getTeams().size(); i++) {
-			if (placeOfWork.getTeams().get(i).getName().equals(name)) {
-				res = i;
-			}
-		}
-		return res;
+		return model.logic.Utils.searchProjectTeamByName(placeOfWork, name);
 	}
 
 	@Override

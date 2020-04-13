@@ -5,36 +5,25 @@ import static view.Output.*;
 
 import java.util.*;
 
+import model.entity.groups.ITCompany;
 import model.entity.groups.ProjectTeam;
 import model.logic.Storable;
 
 public class PM extends Employee {
 
-	public PM() {
-
+	public PM(String name, int age, boolean isHasJob, int id, ITCompany placeOfWork, ProjectTeam project,
+			String calling, int cost) {
+		super(name, age, isHasJob, id, placeOfWork, project, calling, cost);
 	}
 
-	public PM(String name, int age, boolean isHasJob, int id, String placeOfWork, String calling, int cost) {
-		super(name, age, isHasJob, id, placeOfWork, calling, cost);
-	}
-	
 	public PM(PM pm) {
-		super(pm);	
+		super(pm);
 	}
-	
-	/*
-	 * ѕредопределЄнна€ аннотаци€ @Override используетс€ дл€ вы€влени€ логических ошибок на этапе компил€ции.
-	 *  Ётой аннотацией желательно помечать каждый метод, который будет перекрывать метод из суперкласса 
-	 *  или реализовывать метод из интерфейса. ≈сли в суперклассе или интерфейсе нет метода с такой же сигнатурой,
-	 *   то возникнет ошибка компил€ции. Ёто позвол€ет легко вы€вл€ть ситуации,
-	 *    когда в суперклассе или интерфейсе была удалена или изменена сигнатура перекрываемого метода.*/
 
-	
-
-	public boolean isCommonId(int id, Employee ... ms) {
+	public boolean isCommonId(int id, Employee... ms) {
 		boolean res = false;
-		for(int i=0; i<ms.length; i++) {
-			if(ms[i].getId()==id) {
+		for (int i = 0; i < ms.length; i++) {
+			if (ms[i].getId() == id) {
 				res = true;
 				break;
 			}
@@ -42,98 +31,70 @@ public class PM extends Employee {
 		return res;
 	}
 
-	public int searchProjectTeamByName(Storable<ProjectTeam> teams, String name) {
-		int res = Integer.MAX_VALUE;
-		for(int i = 0 ; i<teams.size(); i++) {
-			if(teams.get(i).getName().equals(name)) {
-				res = i;
-			}
-		}
-		return res;
+	public int searchProjectTeamByName(String name) {
+		return model.logic.Utils.searchProjectTeamByName(placeOfWork, name);
 	}
-	
-	public Employee searchById(Storable<ProjectTeam> teams, int elem) {
+
+	public Employee searchById(int elem) {
 		Employee res = null;
-		for(int i = 0 ; i<teams.size(); i++) {
-			if(search(teams.get(i).getMember(), elem) !=null) {
-				res=search(teams.get(i).getMember(), elem);
+		for (int i = 0; i < placeOfWork.getTeams().size(); i++) {
+			if (search(placeOfWork.getTeams().get(i).getMember(), elem) != null) {
+				res = search(placeOfWork.getTeams().get(i).getMember(), elem);
 				break;
 			}
 		}
 		return res;
 	}
-	
-	public int searchTeamIndexById(Storable<ProjectTeam> teams,int id) {
+
+	public int searchTeamIndexById(int id) {
 		int res = 0;
-		for(int i = 0 ; i<teams.size(); i++) {
-			if(search(teams.get(i).getMember(), id) != null) {
+		for (int i = 0; i < placeOfWork.getTeams().size(); i++) {
+			if (search(placeOfWork.getTeams().get(i).getMember(), id) != null) {
 				res = i;
 				break;
 			}
 		}
 		return res;
 	}
-	
-	public int searchEmpIndexById(Storable storable,int id) {
-		int res=0;
-		for(int i=0; i<storable.size(); i++) {
-			if(((Employee) storable.get(i)).getId()==id) {
+
+	public int searchEmpIndexById(Storable storable, int id) {
+		int res = 0;
+		for (int i = 0; i < storable.size(); i++) {
+			if (((Employee) storable.get(i)).getId() == id) {
 				res = i;
 			}
 		}
 		return res;
 	}
-	
 
+	public void moveEmployeeToOtherTeam(String newTeam, int id) {
+		int TargetTeam = searchProjectTeamByName(newTeam);
+		int currentTeam = searchTeamIndexById(id);
+		int empNumber = searchEmpIndexById(placeOfWork.getTeams().get(currentTeam).getMember(), id);
+		placeOfWork.getTeams().get(TargetTeam).getMember().add(searchById(id));
+		placeOfWork.getTeams().get(currentTeam).getMember().remove(empNumber);
+		searchById(id).setProject(placeOfWork.getTeams().get(TargetTeam));
+	}
 
-	public void showDevs(Developer[] ms) {
-		for (int i = 0; i < ms.length; i++) {
-			exhibit(ms[i].toString());
+	public void sort(String teamName, String key) {
+		switch (key.toLowerCase()) {
+		case "cost":
+			sortCost(placeOfWork.getTeams().get(searchProjectTeamByName(teamName)).getMember());
+			break;
+		case "age":
+			sortAge(placeOfWork.getTeams().get(searchProjectTeamByName(teamName)).getMember());
+			break;
+		case "name":
+			sortName(placeOfWork.getTeams().get(searchProjectTeamByName(teamName)).getMember());
+			break;
 		}
 	}
 
-	/*public Developer[] sortList(Developer[] ms, String key) {
-		// ms dev[]
-		// no plural return
-		switch (key) {
-		case "age":
-			return sortAge(ms);
-		//case "skill":
-			//return sortSkill(ms);
-		case "name":
-			return sortName(ms);
-		default:
-			return null;
-		}
-	}*/
-	
 	@Override
 	public void work() {
-		exhibitRed("Project manager is working!");
-	}
-
-	@Override
-	public int hashCode() {
-		return super.hashCode();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return super.toString();
+		exhibit("Project manager is working!");
 	}
 
 }
+
+

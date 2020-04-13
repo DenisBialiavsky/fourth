@@ -1,7 +1,6 @@
 package model.entity;
 
 import static view.Output.exhibit;
-
 import model.entity.groups.ITCompany;
 import model.entity.groups.ProjectTeam;
 

@@ -28,7 +28,7 @@ namespace SingleThread
 
         public PendulumBuilder BuildMaxAlpha()
         {
-            pendulum.MaxAlpha = (float)Math.Asin(pendulum.A / (2 * pendulum.Length));
+            pendulum.MaxAlpha = 2 * (float)Math.Asin(pendulum.A / (2 * pendulum.Length));
             return this;
         }
 

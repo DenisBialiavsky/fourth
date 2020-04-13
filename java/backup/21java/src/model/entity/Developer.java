@@ -1,6 +1,8 @@
 package model.entity;
 
 import model.entity.Developer;
+import model.entity.groups.ITCompany;
+import model.entity.groups.ProjectTeam;
 
 import static view.Output.*;
 
@@ -9,18 +11,14 @@ import java.util.Objects;
 public class Developer extends Employee {
 	private int skill;// mark from 1 to 100, for example 51
 
-	public Developer() {
-
-	}
-
 	public Developer(Developer dev) {
 		super(dev);
 		skill = dev.skill;
 	}
 
-	public Developer(String name, int age, boolean isHasJob, int id, String placeOfWork, String calling, int cost,
+	public Developer(String name, int age, boolean isHasJob, int id, ITCompany placeOfWork,ProjectTeam project, String calling, int cost,
 			int skill) {
-		super(name, age, isHasJob, id, placeOfWork, calling, cost);
+		super(name, age, isHasJob, id, placeOfWork,project, calling, cost);
 		this.skill = skill;
 	}
 
@@ -36,6 +34,8 @@ public class Developer extends Employee {
 	public void work() {
 		exhibit(this.getName() + "\t is writing code!");
 	}
+
+	
 
 	@Override
 	public int hashCode() {

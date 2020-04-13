@@ -12,10 +12,12 @@ namespace SingleThread
     {
         public double Phase;
         public double X;
-        public Moment(double phase, double x)
+        public double Time;
+        public Moment(double phase, double x, double t)
         {
             Phase = phase;
             X = x;
+            Time = t;
         }
     }
     public class Data

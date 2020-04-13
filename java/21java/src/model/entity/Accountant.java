@@ -2,7 +2,10 @@ package model.entity;
 
 import model.entity.groups.ITCompany;
 import model.entity.groups.ProjectTeam;
-import static view.Output.exhibit;;
+import static model.logic.Utils.searchProjectTeamByName;
+import static view.Output.exhibit;
+
+
 
 public class Accountant extends Employee {
 
@@ -14,11 +17,33 @@ public class Accountant extends Employee {
 	public Accountant(Accountant pm) {
 		super(pm);
 	}
-//the chippest...
+
+	public Employee searchCheapest() {
+		Employee cheapest = placeOfWork.getTeams().get(0).getMember().get(0);
+		for(Object projTeam : placeOfWork.getTeams()) {
+			for(Object employee : ((ProjectTeam)projTeam).getMember()) {
+				if(((Employee)employee).getCost() < cheapest.getCost())
+					cheapest = (Employee)employee;
+			}
+		}
+		return cheapest;
+	}
+	
+	public Employee searchDearest() {
+		Employee cheapest = placeOfWork.getTeams().get(0).getMember().get(0);
+		for(Object projTeam : placeOfWork.getTeams()) {
+			for(Object employee : ((ProjectTeam)projTeam).getMember()) {
+				if(((Employee)employee).getCost() > cheapest.getCost())
+					cheapest = (Employee)employee;
+			}
+		}
+		return cheapest;
+	}
+	
 	public int countExps() {
 		int sum = 0;
 		for (int i = 0; i < placeOfWork.getTeams().size(); i++) {
-			sum += countExps(placeOfWork.getTeams().get(i));
+			sum += countExps(placeOfWork.getTeams().get(i).getName());
 		}
 		return sum;
 	}
@@ -26,21 +51,24 @@ public class Accountant extends Employee {
 	public int countProfit() {
 		int sum = 0;
 		for (int i = 0; i < placeOfWork.getTeams().size(); i++) {
-			sum += countProfit(placeOfWork.getTeams().get(i));
+			sum += countProfit(placeOfWork.getTeams().get(i).getName());
 		}
 		return sum;
 	}
 
-	public int countExps(ProjectTeam project) {
+	public int countExps(String name) {
+		int index = searchProjectTeamByName(placeOfWork, name); 
 		int sum = 0;
-		for (int i = 0; i < project.getMember().size(); i++) {
-			sum += project.getMember().get(i).getCost();
+		for (int i = 0; i < placeOfWork.getTeams().get(index).getMember().size(); i++) {
+			sum += placeOfWork.getTeams().get(index).getMember().get(i).getCost();
 		}
-		return sum * project.getTimeToDevProject();
+		return sum * placeOfWork.getTeams().get(index).getTimeToDevProject();
 	}
 
-	public int countProfit(ProjectTeam project) {
-		return project.getBudget() - countExps(project);
+	public int countProfit(String name) {
+		int index = searchProjectTeamByName(placeOfWork, name); 
+		return placeOfWork.getTeams().get(index).getBudget() 
+				- countExps(placeOfWork.getTeams().get(index).getName());
 	}
 
 	public int countAllBudgets() {
@@ -53,7 +81,7 @@ public class Accountant extends Employee {
 	
 	@Override
 	public void work() {
-		exhibit("Accountant is counting!");
+		exhibit(getName() + " is accounting!");
 	}
 
 }
