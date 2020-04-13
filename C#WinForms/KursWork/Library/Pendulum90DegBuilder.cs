@@ -8,13 +8,10 @@ namespace Library
 {
     public class Pendulum90DegBuilder : PendulumBuilder
     {
-        
-
         public Pendulum90DegBuilder()
         {
             pendulum = new Pendulum();
         }
-
         
         public override PendulumBuilder BuildT()
         {
@@ -23,7 +20,5 @@ namespace Library
                 (3/8)* Math.Pow(Math.Sin(pendulum.MaxAlpha / 2), 4));
             return this;
         }
-
-        
     }
 }

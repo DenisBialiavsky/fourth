@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace SingleThread
 {
-    
+
     class Processor
     {
         static public void Process(Pendulum p,  PictureBox pictureBox1)
@@ -34,7 +34,7 @@ namespace SingleThread
             }
         }
 
-        static double CountBetta(double x, double l = 8f)
+       static double CountBetta(double x, double l = 8f)
         {
             double alpha = Math.Asin(x / (2 * l)) * 2;
             return (90 / 57.296) - alpha;

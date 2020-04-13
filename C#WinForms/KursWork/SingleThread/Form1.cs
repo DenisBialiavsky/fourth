@@ -58,9 +58,9 @@ namespace SingleThread
         {
             richTextBox1.AppendText("WORD saving is in process...\n");
             Saver = new WordSaver();
-            Saver.Done += () =>
+            Saver.Done += (s) =>
             {
-                richTextBox1.AppendText("The WORD document has been created and filled!\n");
+                richTextBox1.AppendText(s);
             };
             Saver.SaveAsync(Pend);
         }
@@ -69,9 +69,9 @@ namespace SingleThread
         {
             richTextBox1.AppendText("EXCEL saving is in process...\n");
             Saver = new ExcelSaver();
-            Saver.Done += () =>
+            Saver.Done += (s) =>
             {
-                richTextBox1.AppendText("The EXCEL document has been created and filled!\n");
+                richTextBox1.AppendText(s);
             };
             Saver.SaveAsync(Pend);
         }

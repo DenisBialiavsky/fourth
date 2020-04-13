@@ -12,38 +12,45 @@ namespace SingleThread
 {
     class WordSaver : ISaver
     {
-        public event d Done = () => { };
+        public event tepmlate Done = (string s) => { };
+        private string Result = "The WORD document has been created and filled!\n";
         public async void SaveAsync(Pendulum pend)
         {
-            await Task.Run(() => { 
-                string pathDocument = AppDomain.CurrentDomain.BaseDirectory + "PendulumData.docx";
-                DocX document = DocX.Create(pathDocument);
-                document.InsertParagraph("Pendulum report").
-                         Font("Calibri").
-                         FontSize(36).
-                         Color(Color.Navy).
-                         Bold().
-                         Spacing(15).
-                         Alignment = Alignment.center;
-                Paragraph paragraph = document.InsertParagraph();
+            await Task.Run(() =>
+            {
+                try
+                {
+                    string pathDocument = AppDomain.CurrentDomain.BaseDirectory + "PendulumData.docx";
+                    DocX document = DocX.Create(pathDocument);
+                    document.InsertParagraph("Pendulum report").
+                                 Font("Calibri").
+                                 FontSize(36).
+                                 Color(Color.Navy).
+                                 Bold().
+                                 Spacing(15).
+                                 Alignment = Alignment.center;
+                    Paragraph paragraph = document.InsertParagraph();
 
-                paragraph.Alignment = Alignment.left;
+                    paragraph.Alignment = Alignment.left;
 
-                paragraph.AppendLine("The pendulum has swayed one period!").
-                         FontSize(20).
-                         Italic().
-                         UnderlineStyle(UnderlineStyle.dotted).
-                         UnderlineColor(Color.DarkOrange).
-                         Highlight(Highlight.yellow);
-
-                paragraph.AppendLine();
-                paragraph.AppendLine("Length :" + pend.Length + "\nT :" + pend.T + "\nAmpl :" + pend.A +
-                    "\nG :" + pend.Acceleration + "\nMax a :" + pend.MaxAlpha);
-                document.InsertChart(CreateLineChart(pend));
-
-                document.Save();
+                    paragraph.AppendLine("The pendulum has swayed one period!").
+                                 FontSize(20).
+                                 Italic().
+                                 UnderlineStyle(UnderlineStyle.dotted).
+                                 UnderlineColor(Color.DarkOrange).
+                                 Highlight(Highlight.yellow);
+                    paragraph.AppendLine();
+                    paragraph.AppendLine("Length :" + pend.Length + "\nT :" + pend.T + "\nAmpl :" + pend.A +
+                            "\nG :" + pend.Acceleration + "\nMax a :" + pend.MaxAlpha);
+                    document.InsertChart(CreateLineChart(pend));
+                    document.Save();
+                }
+                catch
+                {
+                    Result = "Unpredictable error has occured while writing.\nYou may try again.\n";
+                }
             });
-            Done();
+            Done(Result);
         }
 
         private static Chart CreateLineChart(Pendulum pend)
@@ -105,5 +112,5 @@ namespace SingleThread
             }
         }
     }
-   
+
 }

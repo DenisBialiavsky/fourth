@@ -1,5 +1,0 @@
-C:\Users\Asus\Desktop\C#WinForms\KursWork\ComAttempt\BankServerCSharp\bin\Debug\BankServerCSharp.dll
-C:\Users\Asus\Desktop\C#WinForms\KursWork\ComAttempt\BankServerCSharp\bin\Debug\BankServerCSharp.pdb
-C:\Users\Asus\Desktop\C#WinForms\KursWork\ComAttempt\BankServerCSharp\obj\Debug\BankServerCSharp.csprojAssemblyReference.cache
-C:\Users\Asus\Desktop\C#WinForms\KursWork\ComAttempt\BankServerCSharp\obj\Debug\BankServerCSharp.dll
-C:\Users\Asus\Desktop\C#WinForms\KursWork\ComAttempt\BankServerCSharp\obj\Debug\BankServerCSharp.pdb

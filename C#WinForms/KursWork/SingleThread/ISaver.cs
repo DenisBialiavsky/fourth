@@ -2,11 +2,11 @@
 
 namespace SingleThread
 {
-   public  delegate void d();
+   public  delegate void tepmlate(string s);
     interface ISaver
     {
         void SaveAsync(Pendulum pend);
         
-        event d Done ;
+        event tepmlate Done ;
     }
 }
