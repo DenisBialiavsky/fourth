@@ -22,11 +22,9 @@ namespace SMTPServ
                 TcpClient client = listener.AcceptTcpClient();
                 SMTPServer handler = new SMTPServer();
                 handler.Init(client);
-                Thread thread = new System.Threading.Thread(new ThreadStart(handler.Run));
+                Thread thread = new Thread(new ThreadStart(handler.Run));
                 thread.Start();
             }
         }
-
-        
     }
 }

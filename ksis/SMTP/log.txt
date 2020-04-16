@@ -1,0 +1,72 @@
+
+Inception of connection->
+
+S : 220 localhost -- Fake proxy server
+C : EHLO IvanVarabei
+
+S : 250 OK
+C : MAIL FROM:<somemail@gmail.com>
+
+S : 250 OK
+C : RCPT TO:<varabeiivan@gmail.com>
+
+S : 250 OK
+C : DATA
+
+S : 354 Start mail input; end with
+C : MIME-Version: 1.0
+From: "Tom" <somemail@gmail.com>
+To: varabeiivan@gmail.com
+Date: 16 Apr 2020 10:15:22 +0300
+Subject: =?utf-8?B?0KLQtdGB0YI=?=
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
+
+
+S : 250 OK
+C : PGgyPtCf0LjRgdGM0LzQvi3RgtC10YHRgiDRgNCw0LHQvtGC0Ysgc210cC3QutC70LjQ
+tdC90YLQsDwvaDI+
+C : 
+
+C : 
+.
+
+C : QUIT
+
+<-End of connection
+
+
+Inception of connection->
+
+S : 220 localhost -- Fake proxy server
+C : EHLO IvanVarabei
+
+S : 250 OK
+C : MAIL FROM:<somemail@gmail.com>
+
+S : 250 OK
+C : RCPT TO:<varabeiivan@gmail.com>
+
+S : 250 OK
+C : DATA
+
+S : 354 Start mail input; end with
+C : MIME-Version: 1.0
+From: "Tom" <somemail@gmail.com>
+To: varabeiivan@gmail.com
+Date: 16 Apr 2020 10:19:42 +0300
+Subject: =?utf-8?B?0KLQtdGB0YI=?=
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
+
+
+S : 250 OK
+C : PGgyPtCf0LjRgdGM0LzQvi3RgtC10YHRgiDRgNCw0LHQvtGC0Ysgc210cC3QutC70LjQ
+tdC90YLQsDwvaDI+
+
+.
+
+C : QUIT
+
+<-End of connection
+

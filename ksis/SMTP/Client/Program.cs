@@ -27,7 +27,23 @@ namespace Client
             m.IsBodyHtml = true;
 
 
-            System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("localhost");
+            
+            //
+          /* TcpClient client = new TcpClient();
+            client.Connect("localhost", 25);
+            byte[] data = new byte[256];
+            StringBuilder response = new StringBuilder();
+            NetworkStream stream = client.GetStream();
+            
+
+            Console.WriteLine("Enter massege to send to server : ");
+            string mesToServ = Console.ReadLine();
+            data = Encoding.UTF8.GetBytes(mesToServ);
+            stream.Write(data, 0, data.Length);*/
+
+            // 
+            
+            SmtpClient smtp = new System.Net.Mail.SmtpClient("localhost");
             smtp.Send(m);//Handles all messages in the protocol
             smtp.Dispose();//sends a Quit message
             Console.Read();

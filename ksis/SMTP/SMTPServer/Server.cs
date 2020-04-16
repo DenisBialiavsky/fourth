@@ -27,9 +27,8 @@ namespace SMTPServ
                 {
                     strMessage = Read();
                 }
-                catch (Exception e)
+                catch 
                 {
-                    //a socket error has occured
                     break;
                 }
 
@@ -38,25 +37,20 @@ namespace SMTPServ
                     if (strMessage.StartsWith("QUIT"))
                     {
                         client.Close();
-                        break;//exit while
+                        break;
                     }
-                    //message has successfully been received
                     if (strMessage.StartsWith("EHLO"))
                     {
                         Write("250 OK");
                     }
-
                     if (strMessage.StartsWith("RCPT TO"))
                     {
                         Write("250 OK");
                     }
-
                     if (strMessage.StartsWith("MAIL FROM"))
                     {
-
                         Write("250 OK");
                     }
-
                     if (strMessage.StartsWith("DATA"))
                     {
                         Write("354 Start mail input; end with");

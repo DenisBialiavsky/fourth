@@ -3,3 +3,8 @@ C:\Users\Asus\Desktop\ksis\SMTP\SMTPServer\bin\Debug\SMTPServer.exe
 C:\Users\Asus\Desktop\ksis\SMTP\SMTPServer\bin\Debug\SMTPServer.pdb
 C:\Users\Asus\Desktop\ksis\SMTP\SMTPServer\obj\Debug\SMTPServer.exe
 C:\Users\Asus\Desktop\ksis\SMTP\SMTPServer\obj\Debug\SMTPServer.pdb
+C:\fourth\ksis\SMTP\SMTPServer\bin\Debug\SMTPServer.exe.config
+C:\fourth\ksis\SMTP\SMTPServer\bin\Debug\SMTPServer.exe
+C:\fourth\ksis\SMTP\SMTPServer\bin\Debug\SMTPServer.pdb
+C:\fourth\ksis\SMTP\SMTPServer\obj\Debug\SMTPServer.exe
+C:\fourth\ksis\SMTP\SMTPServer\obj\Debug\SMTPServer.pdb

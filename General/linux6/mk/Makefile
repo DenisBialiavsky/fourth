@@ -1,9 +1,0 @@
-app : main.o another.o 
-	cc -o  -fPIC app main.o another.o
-main.o : main.c another.h
-	cc -c -fPIC main.c
-another.o : another.c another.h
-	cc -c -fPIC another.c
-
-clean : 
-	rm main.o another.o app
